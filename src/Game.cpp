@@ -341,7 +341,7 @@ bool Game::isTransformOnScreen(TransformComponent &transform)
 void Game::reset()
 {
     togglePause();
-    
+
     auto game = Game::getInstance();
 
     game->pGridManager->clearGrid();
@@ -351,6 +351,8 @@ void Game::reset()
     game->pPlayer->setVelocity(Vector2::zero);
 
     game->pUIManager->getPieceUI()->reset();
+
+    game->score = 0;
 }
 
 // static

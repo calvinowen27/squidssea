@@ -48,6 +48,7 @@ void UIPiece::update()
 
             if (game.pGridManager->placePiece(gridCellPos, _pieceType))
             {
+                disable();
                 reset();
             }
         }

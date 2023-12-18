@@ -43,6 +43,9 @@ bool UIElement::init(std::string textureName, Vector2 pos, PositionMode position
 
 void UIElement::update()
 {
+    if(!isEnabled)
+        return;
+
     if (isStatic)
     {
         if (positionMode == PositionMode::ScreenRelative)

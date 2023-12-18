@@ -21,7 +21,10 @@ void UIGroup::update()
 void UIGroup::draw(SDL_Renderer *pRenderer)
 {
     for (auto el : uiElements)
-        el->draw(pRenderer);
+    {
+        if (el->getIsEnabled())
+            el->draw(pRenderer);
+    }
 }
 
 void UIGroup::setEnabled(bool val)
@@ -121,6 +124,18 @@ void PieceUIGroup::init()
 
     _pPauseButton = newUIElement<TextButton>();
     _pPauseButton->init("ui_button", "ii", "arial", WHITE, Vector2(0.0125, 0.85), Vector2(0.0375, 0.0375), Game::togglePause);
+
+    _pScoreCounter = newUIElement<TextElement>();
+    _pScoreCounter->init("", "Score: 0", "arial", WHITE, Vector2(0.45, 0.05), Vector2(0.1, 0.025), false, true);
+
+    setEnabled(true);
+}
+
+void PieceUIGroup::update()
+{
+    UIGroup::update();
+
+    _pScoreCounter->setText("Score: " + std::to_string(game.score));
 }
 
 void PieceUIGroup::reset()
@@ -128,4 +143,11 @@ void PieceUIGroup::reset()
     _pieces[0]->reset();
     _pieces[1]->reset();
     _pieces[2]->reset();
+
+    setEnabled(true);
+}
+
+bool PieceUIGroup::allPiecesUsed()
+{
+    return !_pieces[0]->getIsEnabled() && !_pieces[1]->getIsEnabled() && !_pieces[2]->getIsEnabled();
 }

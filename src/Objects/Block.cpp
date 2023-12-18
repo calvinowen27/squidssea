@@ -42,6 +42,8 @@ void Block::onCollisionEnter(Entity *pOther)
     if (_goal == this && pOther && pOther->getType() == EntityType::Player)
     {
         chooseNewGoal();
+        game.pUIManager->getPieceUI()->reset();
+        game.score++;
     }
 }
 

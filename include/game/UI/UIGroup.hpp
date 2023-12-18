@@ -82,10 +82,13 @@ private:
     std::shared_ptr<UIPiece> _pieces[3];
 
     std::shared_ptr<TextButton> _pPauseButton;
+    std::shared_ptr<TextElement> _pScoreCounter;
 
 public:
     void init() override;
+    void update() override;
     void reset();
+    bool allPiecesUsed();
 };
 
 #endif

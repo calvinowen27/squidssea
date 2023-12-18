@@ -2,6 +2,7 @@
 #include "../../include/game/Game.hpp"
 #include "../../include/game/Input/KeyboardHandler.hpp"
 #include "../../include/game/Entity/Registry.hpp"
+#include "../../include/game/UI/UIManager.hpp"
 
 std::map<SDL_Scancode, bool> inputState;
 
@@ -69,7 +70,7 @@ void Player::onCollisionExit(Entity *pOther)
 
 bool Player::setMoveDir(Vector2 moveDir)
 {
-    if (_canChangeDir)
+    if (_canChangeDir && game.pUIManager->getPieceUI()->allPiecesUsed())
     {
         _moveDir = moveDir;
         _canChangeDir = false;

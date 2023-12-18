@@ -73,6 +73,8 @@ public:
     bool running = true;
     bool paused = false;
 
+    int score = 0;
+
     static Game *getInstance(); // get singleton instance
     Game();
     ~Game();
