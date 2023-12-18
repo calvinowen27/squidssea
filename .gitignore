@@ -1,0 +1,8 @@
+.vs/
+.vscode/settings.json
+
+build/obj/
+
+*.stackdump
+
+*.txt

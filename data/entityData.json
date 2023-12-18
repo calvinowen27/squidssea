@@ -1,0 +1,138 @@
+{
+    "Player": {
+        "spriteDims": [
+            16,
+            16
+        ],
+        "collider": {
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "isStatic": false
+        },
+        "hitbox": {
+            "type": "Box",
+            "start": [
+                0.0625,
+                0
+            ],
+            "end": [
+                0.9375,
+                1
+            ]
+        },
+        "relativeRoot": [
+            0.5,
+            0
+        ]
+    },
+    "Block": {
+        "spriteDims": [
+            16,
+            16
+        ],
+        "collider": {
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "isStatic": true
+        },
+        "hitbox": {
+            "type": "Box",
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "relativeRoot": [
+            0.5,
+            0
+        ]
+    },
+    "Border": {
+        "spriteDims": [
+            16,
+            16
+        ],
+        "collider": {
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "isStatic": true
+        },
+        "hitbox": {
+            "type": "Box",
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "relativeRoot": [
+            0.5,
+            0
+        ]
+    },
+    "NotSet": {
+        "spriteDims": [
+            16,
+            16
+        ],
+        "collider": {
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "rigidbody": {
+            "isStatic": true
+        },
+        "hitbox": {
+            "type": "Box",
+            "start": [
+                0,
+                0
+            ],
+            "end": [
+                1,
+                1
+            ]
+        },
+        "relativeRoot": [
+            0.5,
+            0
+        ]
+    }
+}
