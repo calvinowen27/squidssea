@@ -1,0 +1,76 @@
+{
+    "Player": [
+        {
+            "name": "idle_down",
+            "duration": 1,
+            "frameCount": 4,
+            "loops": true
+        },
+        {
+            "name": "idle_up",
+            "duration": 1.5,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "idle_left",
+            "duration": 1.5,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "idle_right",
+            "duration": 1.5,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "walk_down",
+            "duration": 1.25,
+            "frameCount": 6,
+            "loops": true
+        },
+        {
+            "name": "walk_up",
+            "duration": 1.25,
+            "frameCount": 6,
+            "loops": true
+        },
+        {
+            "name": "walk_left",
+            "duration": 0.75,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "walk_right",
+            "duration": 0.75,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "run_down",
+            "duration": 0.75,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "run_up",
+            "duration": 0.75,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "run_left",
+            "duration": 0.75,
+            "frameCount": 2,
+            "loops": true
+        },
+        {
+            "name": "run_right",
+            "duration": 0.75,
+            "frameCount": 2,
+            "loops": true
+        }
+    ]
+}

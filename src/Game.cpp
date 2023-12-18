@@ -228,7 +228,10 @@ void Game::pollEvents()
             SDL_Window *win = SDL_GetWindowFromID(event.window.windowID);
             if (win == pWindow)
             {
+                int oldWidth = winWidth;
                 SDL_GetWindowSize(win, &winWidth, &winHeight);
+
+                ppm *= (float)winWidth / (float)oldWidth;
             }
         }
     }
