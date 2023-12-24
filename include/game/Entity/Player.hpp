@@ -36,6 +36,8 @@ public:
     inline void setCurrInteractable(InteractableObject *pInteractable) { _pCurrInteractable = pInteractable; }
     inline InteractableObject *getCurrInteractable() { return _pCurrInteractable; }
 
+    inline void enableMovement() { _canChangeDir = true; }
+
     bool setMoveDir(Vector2 moveDir);
 };
 

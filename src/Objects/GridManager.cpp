@@ -168,6 +168,9 @@ void GridManager::clearRow(int row)
         pBlock = _grid[row][c];
         if (pBlock && pBlock->isAlive())
         {
+            if(pBlock->isGoal())
+                _game.score++;
+                
             pBlock->queueKill();
             _grid[row][c] = nullptr;
         }
@@ -183,6 +186,9 @@ void GridManager::clearCol(int col)
         pBlock = _grid[r][col];
         if (pBlock && pBlock->isAlive())
         {
+            if(pBlock->isGoal())
+                _game.score++;
+            
             pBlock->queueKill();
             _grid[r][col] = nullptr;
         }

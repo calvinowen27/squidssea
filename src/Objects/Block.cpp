@@ -11,6 +11,8 @@ bool Block::init(Vector2 pos)
 {
     Object::init(EntityType::Block, pos);
 
+    _isGoal = false;
+
     return true;
 }
 
@@ -22,6 +24,7 @@ void Block::setAsGoal()
     }
 
     _goal = this;
+    _isGoal = true;
 
     if (pRenderer)
         pRenderer->setTexture("goal");
@@ -30,9 +33,15 @@ void Block::setAsGoal()
 void Block::removeAsGoal()
 {
     _goal = nullptr;
+    _isGoal = false;
 
     if (pRenderer)
         pRenderer->setTexture("block");
+}
+
+bool Block::isGoal()
+{
+    return _isGoal;
 }
 
 void Block::onCollisionEnter(Entity *pOther)
@@ -42,11 +51,11 @@ void Block::onCollisionEnter(Entity *pOther)
     if (_goal == this && pOther && pOther->getType() == EntityType::Player)
     {
         chooseNewGoal();
-        game.pUIManager->getPieceUI()->reset();
         game.score++;
     }
 }
 
+// static
 void Block::chooseNewGoal()
 {
     GridManager &gridManager = *Game::getInstance()->pGridManager;
@@ -66,6 +75,14 @@ void Block::chooseNewGoal()
         else
             chooseNewGoal();
     }
+
+    Game::getInstance()->pUIManager->getPieceUI()->reset();
+}
+
+// static
+Block *Block::getGoal()
+{
+    return Block::_goal;
 }
 
 void Block::kill()

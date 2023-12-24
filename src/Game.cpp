@@ -352,6 +352,7 @@ void Game::reset()
     game->pPlayer->setPos(Vector2(0, 3));
     game->pPlayer->setMoveDir(Vector2(0, 1));
     game->pPlayer->setVelocity(Vector2::zero);
+    game->pPlayer->enableMovement();
 
     game->pUIManager->getPieceUI()->reset();
 
