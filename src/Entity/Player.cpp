@@ -34,6 +34,26 @@ void Player::update(float time)
         return;
 
     LiveEntity::update(time);
+
+    if(_pKeyboardHandler->isPressed(InputKey::Up))
+    {
+        setMoveDir(Vector2(0, 1));
+    }
+
+    if(_pKeyboardHandler->isPressed(InputKey::Down))
+    {
+        setMoveDir(Vector2(0, -1));
+    }
+
+    if(_pKeyboardHandler->isPressed(InputKey::Right))
+    {
+        setMoveDir(Vector2(1, 0));
+    }
+
+    if(_pKeyboardHandler->isPressed(InputKey::Left))
+    {
+        setMoveDir(Vector2(-1, 0));
+    }
 }
 
 void Player::kill()

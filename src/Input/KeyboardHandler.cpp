@@ -79,25 +79,6 @@ void KeyboardHandler::onKeyUp(SDL_Scancode scancode)
 
 void KeyboardHandler::onKeyDown(SDL_Scancode scancode)
 {
-    if(scancode == _keybinds[InputKey::Up])
-    {
-        _game.pPlayer->setMoveDir(Vector2(0, 1));
-    }
-
-    if(scancode == _keybinds[InputKey::Down])
-    {
-        _game.pPlayer->setMoveDir(Vector2(0, -1));
-    }
-
-    if(scancode == _keybinds[InputKey::Right])
-    {
-        _game.pPlayer->setMoveDir(Vector2(1, 0));
-    }
-
-    if(scancode == _keybinds[InputKey::Left])
-    {
-        _game.pPlayer->setMoveDir(Vector2(-1, 0));
-    }
 }
 
 bool KeyboardHandler::isPressed(InputKey key)
