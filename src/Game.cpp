@@ -25,12 +25,12 @@ Game *Game::_pInstance;
 int main()
 {
     Game *pGame = Game::getInstance();
-    if (pGame->init())
+    if (pGame->windowInit())
     {
         return EXIT_FAILURE;
     }
 
-    pGame->start();
+    pGame->gameInit();
 
     return 0;
 }
@@ -62,7 +62,7 @@ Game *Game::getInstance()
     return _pInstance;
 }
 
-int Game::init()
+int Game::windowInit()
 {
     SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS);
 
@@ -109,6 +109,11 @@ int Game::init()
 
     SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
 
+    return 0;
+}
+
+int Game::gameInit()
+{
     gridDims = Vector2(9, 9);
     cameraPos = (gridDims / 2) - Vector2(0.5, 2);
 
@@ -128,44 +133,38 @@ int Game::init()
     pAnimationManager->init();
     pGridManager->init(Vector2Int(9, 9));
 
-    pPlayer = pObjectManager->newEntity<Player>();
-    pPlayer->init(Vector2(0, 3));
-
-    // auto block = pObjectManager->newEntity<Block>();
-    // block->init(Vector2::zero);
-    // obj->init(EntityType::Border, Vector2(1, 1));
-
-    // obj = pObjectManager->newEntity<Object>();
-    // obj->init(EntityType::Border, Vector2(4, 6));
-
-    // obj = pObjectManager->newEntity<Object>();
-    // obj->init(EntityType::Border, Vector2(3, 7));
-
-    // obj = pObjectManager->newEntity<Object>();
-    // obj->init(EntityType::Border, Vector2(2, 5));
-
-    // obj = pObjectManager->newEntity<Object>();
-    // obj->init(EntityType::Border, Vector2(3, 2));
-
-    // obj = pObjectManager->newEntity<Object>();
-    // obj->init(EntityType::Border, Vector2(8, 0));
-
-    // obj = pObjectManager->newEntity<Object>();
-    // obj->init(EntityType::Border, Vector2(5, 4));
-
-    auto obj = pObjectManager->newEntity<Object>();
-    obj->init(EntityType::Border, Vector2(-1, -1), Vector2(1, gridDims.y + 2));
-
-    obj = pObjectManager->newEntity<Object>();
-    obj->init(EntityType::Border, Vector2(gridDims.x, -1), Vector2(1, gridDims.y + 2));
-
-    obj = pObjectManager->newEntity<Object>();
-    obj->init(EntityType::Border, Vector2(0, -1), Vector2(gridDims.x, 1));
-
-    obj = pObjectManager->newEntity<Object>();
-    obj->init(EntityType::Border, Vector2(0, gridDims.y), Vector2(gridDims.x, 1));
+    start();
 
     return 0;
+}
+
+void Game::startGame()
+{
+    Game &game = *Game::getInstance();
+
+    game.pPlayer = game.pObjectManager->newEntity<Player>();
+    game.pPlayer->init(Vector2(0, 3));
+
+    Vector2 gridDims = game.gridDims;
+
+    auto obj = game.pObjectManager->newEntity<Object>();
+    obj->init(EntityType::Border, Vector2(-1, -1), Vector2(1, gridDims.y + 2));
+
+    obj = game.pObjectManager->newEntity<Object>();
+    obj->init(EntityType::Border, Vector2(gridDims.x, -1), Vector2(1, gridDims.y + 2));
+
+    obj = game.pObjectManager->newEntity<Object>();
+    obj->init(EntityType::Border, Vector2(0, -1), Vector2(gridDims.x, 1));
+
+    obj = game.pObjectManager->newEntity<Object>();
+    obj->init(EntityType::Border, Vector2(0, gridDims.y), Vector2(gridDims.x, 1));
+
+    game.pUIManager->getStartMenuUI()->setEnabled(false);
+    game.pUIManager->getPieceUI()->setEnabled(true);
+
+    Block::chooseNewGoal();
+
+    // game.start();
 }
 
 void Game::start()
@@ -355,6 +354,7 @@ void Game::reset()
     game->pPlayer->enableMovement();
 
     game->pUIManager->getPieceUI()->reset();
+    game->pUIManager->getPieceUI()->setEnabled(true);
 
     game->score = 0;
 }

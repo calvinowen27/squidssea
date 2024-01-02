@@ -43,8 +43,6 @@ void GridManager::init(Vector2Int gridDims)
             _grid[r][c] = nullptr;
         }
     }
-
-    Block::chooseNewGoal();
 }
 
 bool GridManager::placePiece(Vector2Int cellPos, PieceType piece)

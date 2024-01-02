@@ -39,6 +39,7 @@ private:
     std::shared_ptr<DebugUIGroup> _pDebugUI;
     std::shared_ptr<PauseUIGroup> _pPauseUI;
     std::shared_ptr<PieceUIGroup> _pPieceUI;
+    std::shared_ptr<StartMenuUIGroup> _pStartMenuUI;
 
     std::shared_ptr<UIGroup> _pCurrUIGroup;
 
@@ -65,6 +66,8 @@ public:
     inline std::shared_ptr<DebugUIGroup> getDebugUI() { return _pDebugUI; }
     inline std::shared_ptr<PauseUIGroup> getPauseUI() { return _pPauseUI; }
     inline std::shared_ptr<PieceUIGroup> getPieceUI() { return _pPieceUI; }
+    inline std::shared_ptr<StartMenuUIGroup> getStartMenuUI() { return _pStartMenuUI; }
+    
     inline void setCurrUIGroup(std::shared_ptr<UIGroup> pNewGroup) { _pCurrUIGroup = pNewGroup; }
     inline void enableCurrUIGroup() { _pCurrUIGroup->setEnabled(true); }
     inline void disableCurrUIGroup() { _pCurrUIGroup->setEnabled(false); }

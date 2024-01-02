@@ -78,8 +78,10 @@ public:
     static Game *getInstance(); // get singleton instance
     Game();
     ~Game();
-    int init();           // init window and manager class instances
-    void start();         // start game
+    int windowInit();           // init window
+    int gameInit();             // init game and manager class instances
+    static void startGame();         // start game
+    void start();
     void runPhysics();    // runs physics thread
     void pollEvents();    // polls input events for mouse and keyboard
     void frameUpdate();   // perform render cycle

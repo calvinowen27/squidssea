@@ -91,4 +91,13 @@ public:
     bool allPiecesUsed();
 };
 
+class StartMenuUIGroup : public UIGroup
+{
+private:
+    std::shared_ptr<TextButton> _pStartButton;
+
+public:
+    void init() override;
+};
+
 #endif

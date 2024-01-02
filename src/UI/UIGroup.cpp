@@ -128,7 +128,7 @@ void PieceUIGroup::init()
     _pScoreCounter = newUIElement<TextElement>();
     _pScoreCounter->init("", "Score: 0", "arial", WHITE, Vector2(0.45, 0.05), Vector2(0.1, 0.025), false, true);
 
-    setEnabled(true);
+    setEnabled(false);
 }
 
 void PieceUIGroup::update()
@@ -143,11 +143,21 @@ void PieceUIGroup::reset()
     _pieces[0]->reset();
     _pieces[1]->reset();
     _pieces[2]->reset();
-
-    setEnabled(true);
 }
 
 bool PieceUIGroup::allPiecesUsed()
 {
     return !_pieces[0]->getIsEnabled() && !_pieces[1]->getIsEnabled() && !_pieces[2]->getIsEnabled();
+}
+
+
+/* START MENU UI GROUP */
+void StartMenuUIGroup::init()
+{
+    UIGroup::init();
+
+    _pStartButton = newUIElement<TextButton>();
+    _pStartButton->init("ui_button", "start", "arial", WHITE, Vector2(0.4, 0.25), Vector2(0.25, 0.05), Game::startGame);
+
+    setEnabled(true);
 }

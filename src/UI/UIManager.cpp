@@ -25,6 +25,9 @@ UIManager *UIManager::getInstance()
 
 void UIManager::init()
 {
+    _pStartMenuUI = newUIGroup<StartMenuUIGroup>();
+    _pStartMenuUI->init();
+
     _pPieceUI = newUIGroup<PieceUIGroup>();
     _pPieceUI->init();
 
